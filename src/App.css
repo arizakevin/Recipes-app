@@ -1,38 +1,69 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
+  background: url(./images/background1.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+.spam {
+  margin: 30px;
+}
+
+.search-form {
+  min-height: 10vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.search-bar {
+  width: 50%;
+  border: none;
+  padding: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.search-button{
+   background: lightcoral;
+   border: none;
+   padding: 10px 20px;
+   color: white;
+   transition-duration: 0.1s;
+}
+
+.search-button:hover {
+   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.search-button:active {
+  background-color: #af5050;
+  transform: translateY(2px);
+}
+
+.recipes {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  transition-duration: 0.4s;
+}
+
+.text {
+  display: flex;
+  justify-content: center;
+  font-family: Zilla Slab Highlight, display;
+  font-size: 80px;
+  font-weight: 100;
+  color: rgba(162, 25, 25, 1);
+  text-transform: none;
+  font-style: normal;
+  text-decoration: none;
+  line-height: 2em;
+  letter-spacing: 2.3px; 
+  margin: 0;
+}
+
+#noFoundText {
+  justify-content: center;
+  font-size: 60px;
+  color: rgba(162, 25, 25, 0.5);
+  text-transform: none;
+  margin: 2em;
 }
