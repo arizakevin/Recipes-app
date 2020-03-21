@@ -45,13 +45,13 @@ const App = () => {
     <div className="App">
       <spam className="spam"/>
       <Logo />
-      <h1 className="text">Recipes App</h1>
+      <div className="text"><h1>Recipes App</h1></div>
       <form onSubmit={getSearch} className="search-form">
         <input className="search-bar" type="text" value={search} onChange={updateSearch} placeholder="Type any food"/>
-        <button className="search-button" type="submit">Search for recipes</button>
+        <button className="search-button" type="submit">Search</button>
       </form>
       { recipes.length === 0
-        ? <h2 className='text' id="noFoundText">No Recipes Found</h2>
+        ? <div className='text' id="noFoundText"><h2>No Recipes Found</h2></div>
         : (
             <div className="recipes">
               {recipes.map((recipe, index) =>(
