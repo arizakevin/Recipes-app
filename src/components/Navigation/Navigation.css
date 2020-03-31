@@ -1,0 +1,19 @@
+p {
+	font-family: Zilla Slab Highlight, display;
+	color: rgba(132, 10, 10, 1);
+	transition: 2s;
+}
+
+p:hover {
+	font-size: 1.1em;
+}
+
+.nav {
+	overflow: hidden;
+	background-color: #fcf8e8;
+	opacity: 0.9;
+	position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    z-index: 999;
+}

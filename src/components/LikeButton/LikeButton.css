@@ -1,0 +1,33 @@
+ #main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+}
+
+.like {
+  color: #fff;
+  outline: none;
+  background: rgba(162, 25, 25, 1);
+  border: none;
+  font-family: Zilla Slab Highlight, display;
+  font-size: 1.1em;
+  box-shadow: 0 0 22px 4px rgba(0,0,0,0.1);
+  height: 40px;
+  width: 100px;
+  transition: box-shadow 0.3s;
+}
+
+.like:hover {
+   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+   background-color: #ad5151;
+   transform: translateY(-3px);
+}
+
+.like:active {
+  box-shadow: 3px 3px 22px 4px rgba(0,0,0,0.1);
+  background-color: #481616;
+  transform: translateY(3px);
+}
+
+

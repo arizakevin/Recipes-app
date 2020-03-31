@@ -1,0 +1,37 @@
+.main {
+	background: #fcf8e8;
+	border-radius: 10px;
+}
+
+.letter1 {
+	font-family: Zilla Slab Highlight, display;
+	color: rgba(132, 10, 10, 1);
+}
+
+.letter2 {
+	font-family: Zilla Slab Highlight, display;
+	color: rgba(50, 5, 5, 1);
+}
+
+.letter3 {
+	font-family: Zilla Slab Highlight, display;
+	color: rgba(50, 5, 5, 1);
+}
+
+.btn{
+   background: lightcoral;
+   border: none;
+   padding: 10px 20px;
+   color: white;
+   transition-duration: 0.1s;
+}
+
+.btn:hover {
+   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+   background-color: #cf7373;
+}
+
+.btn:active {
+  background-color: #af5050;
+  transform: translateY(3px);
+}
