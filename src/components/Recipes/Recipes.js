@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import RecipeCard from './RecipeCard/RecipeCard';
 import './Recipes.css';
+import {Animated} from "react-animated-css";
 
-const Recipes = ({ recipes, query }) => {
+export default function Recipes ({ recipes, query }) {
 
 	const [key, setKey] = useState(0);
 
 	const renderRecipes = () => {
-		console.log(recipes);
+		console.log('Recipes: ', recipes);
 		if (recipes.length === 0) {
 			return (
 				<div>
-		  			<div className='text' id="noFoundText"><h2>No Recipes Found</h2></div>;
+		  			<div className='text' id="noFoundText"><h2>No recipes found  :(</h2></div>;
 					<div className="spam pa4"/>
 				</div>	
 			);
@@ -20,13 +21,20 @@ const Recipes = ({ recipes, query }) => {
 				<div className="recipes">
                     { //Recipe Card
 	                    recipes.map((recipe) =>(
-	                      <RecipeCard className='ma2' query={query}
-	                        key={() => {setKey(key + 1)}} 
-	                        title={recipe.recipe.label} 
-	                        image={recipe.recipe.image}
-	                        calories={Math.round(recipe.recipe.calories)}
-	                        ingredients={recipe.recipe.ingredients}    
-	                      />
+		                    	<Animated animationIn="zoomIn"
+						                animationOut="fadeOut" 
+						                isVisible={true} 
+						                animationInDuration={1000}
+						        >
+			                    	<RecipeCard className='ma2' query={query}
+			                    	  key={() => {setKey(key + 1)}} 
+			                    	  title={recipe.recipe.label} 
+			                    	  image={recipe.recipe.image}
+			                    	  calories={Math.round(recipe.recipe.calories)}
+			                    	  ingredients={recipe.recipe.ingredients} 
+			                    	  url={recipe.recipe.url}   
+			                    	/>
+			                    </Animated>
 	                    ))
                     }
                 </div>
@@ -38,8 +46,5 @@ const Recipes = ({ recipes, query }) => {
 		<div>
 			{renderRecipes()}
 		</div>
-
 	);
 }
-
-export default Recipes;

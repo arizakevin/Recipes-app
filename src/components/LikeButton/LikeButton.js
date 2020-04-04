@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { NotificationContainer, NotificationManager } from 'react-notifications';
 import './LikeButton.css';
 
 const LikeButton = ({ onSavedRecipe, recipeSaved, query }) => {

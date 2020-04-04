@@ -1,20 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import Recipes from './components/Recipes/Recipes';
-import Form from './components/Form/Form';
+import React, { useEffect, useState, createRef, useRef } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import Home from './components/Home/Home';
 import Logo from './components/Logo/Logo';
+import AppName from './components/AppName/AppName';
 import Signin from './components/Signin/Signin';
 import Register from './components/Register/Register';
 import Navigation from './components/Navigation/Navigation';
+import BottomNavbar from './components/BottomNavbar/BottomNavbar';
 import './App.css';
 
-const App = () => {
+const APP_ID = 'cba9219b';
+const APP_KEY = '7e92be1e8a26b78e9edd5ed297fc36ab';
+
+export default function App() {
 
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState('');
   const [query, setQuery] = useState('apple');
-  const [key, setKey] = useState(0);
   const [route, setRoute] = useState('signin');
   const [isSignedIn, setIsSignedIn] = useState(false);
+  const [appRenders, setAppRenders] = useState(0);
   const [user, setUser] = useState({
       id: '',
       name: '',
@@ -26,7 +31,6 @@ const App = () => {
   const resetState = () => {
     setRecipes([]);
     setQuery('apple');
-    setKey(0);
     setRoute('signin');
     setIsSignedIn(false);
     setUser({
@@ -37,21 +41,20 @@ const App = () => {
         joined: ''
     })
   }
-  
-  const APP_ID = 'cba9219b';
-  const APP_KEY = '7e92be1e8a26b78e9edd5ed297fc36ab';
 
   useEffect( () => {
-    getRecipes();
-    console.log('Recipes after fetching: ', recipes);
-  }, [query]);
+      getRecipes();
+  }, [query]); 
 
-  const getRecipes = async () => {
-    const response = await fetch(
-      `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
-    );
-    const data = await response.json();
-    setRecipes(data.hits);
+  useEffect( () => {
+      console.log('isSignedIn: ', isSignedIn);
+  },[]); 
+
+  const getRecipes = () => {
+      fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`)  
+          .then(response => response.json())
+          .then(data => setRecipes(data.hits))
+          .catch(error => console.log(error))  
   }
 
   const updateSearch = event => {
@@ -76,68 +79,60 @@ const App = () => {
     });
   }
 
-  const onRouteChange = route => {
-    if (route === 'signout') {
+  const updateIsSignedIn = signedIn => {
+    setIsSignedIn(signedIn);
+    console.log('signedIn: ', signedIn);
+    if (!signedIn) {
+      console.log('Resetting');
       resetState();
-    } else if (route === 'home') {
-      setIsSignedIn(true);
-    }
-    setRoute(route);
-  }
-
-  const renderApp = () => {
-    switch(route) {
-      case "home":
-        return (
-          <div>
-            <Form getSearch={getSearch} search={search} updateSearch={updateSearch} />
-            <spam className='ma3' />
-            <Recipes recipes={recipes} query={query}/>
-          </div>
-        );
-      case "signin":
-        return <Signin loadUser={loadUser} onRouteChange={onRouteChange}/>;
-      case "register":
-        return <Register loadUser={loadUser} onRouteChange={onRouteChange}/>;
-      /*case "myRecipes":
-        return <MyRecipes/>
-      */  
-      case "signout":
-        return <Signin loadUser={loadUser} onRouteChange={onRouteChange}/>;
-    }
+    } 
   }
 
   return(
     <div className="App mb0">
-      <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} />
+      <Navigation isSignedIn={isSignedIn} updateIsSignedIn={updateIsSignedIn} />
       <Logo />
-      <div className="text"><h1>Recipes App</h1></div>
-      {renderApp()}
+      <AppName/>
+
+      <Switch>
+        <Route  
+          exact path="/" 
+          render={(props) => 
+            <Home {...props} 
+              getSearch={getSearch}
+              search={search} 
+              updateSearch={updateSearch} 
+              recipes={recipes}
+              query={query}
+            />
+          }
+        />
+        <Route  
+          path="/signin" 
+          render={(props) => 
+            <Signin {...props} 
+              loadUser={loadUser}
+              updateIsSignedIn={updateIsSignedIn}
+            />
+          }
+        />
+        <Route  
+          path="/register" 
+          render={(props) => 
+            <Register {...props} 
+              loadUser={loadUser}
+              updateIsSignedIn={updateIsSignedIn}
+            />
+          }
+        />
+      </Switch>
+      <BottomNavbar/>
     </div>
   );
 }
 
-export default App;
-
-
 /* My Recipes -> Sorted Recipes
 
 Database [ label, image, calories, ingredients ]
-
-
-if (route === 'home') {
-      return (
-        <div>
-          <Form getSearch={getSearch} search={search} updateSearch={updateSearch} />
-          <Recipes recipes={recipes} />
-        </div>
-      );
-    } else {
-      if (route === 'signin') {
-        return <Signin loadUser={loadUser} onRouteChange={onRouteChange}/>;
-      } else {
-        return <Register loadUser={loadUser} onRouteChange={onRouteChange}/>;
-      }
-    } 
 
 */

@@ -2,10 +2,11 @@
 	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-items: center;
     background: #fcf8e8;
     transition: all .2s ease-in-out;
+    min-width: 350px;
 }
 
 .recipeCard:hover {
@@ -17,23 +18,84 @@
 }
 
 .title {
-	font-family: Zilla Slab Highlight, display;
+	font-family: Montserrat-Regular;
 	color: rgba(132, 10, 10, 1);
 	text-transform: none;
   	font-style: normal;
   	text-decoration: none;
-  	font-size: 1.8em;
+  	font-size: 1.2em;
 }
 
 .calories {
-	font-family: Zilla Slab Highlight, display;
+	font-family: Montserrat-Regular;
 	color: rgba(50, 5, 5, 1);
-	font-size: 1.5em;
+	font-size: 1em;
 	margin-top: 0;
 }
 
-.listText {
-	font-family: Zilla Slab Highlight, display;
+ul {
+	margin-bottom: 0;
+}
+
+li p {
+	font-family: Montserrat-Regular;
 	color: rgba(50, 5, 5, 1);
-	font-size: 1.2em;
+	font-size: 0.9em;
+	line-height:1.5em;
+	text-overflow: ellipsis; /* will make [...] at the end */
+    max-width: 500px; /* change to your preferences */
+    white-space: nowrap; /* paragraph to one line */
+    overflow:hidden; /* older browsers */
+}
+
+a {
+	font-family: Montserrat-Regular;
+	transition: all .2s ease-in-out;
+	color: rgba(50, 5, 5, 1);
+	font-size: 0.7em;
+}
+
+a:hover {
+	transform: scale(1.1);
+}
+
+@media only screen and (max-width: 700px) {
+	.title {
+	  	font-size: 1.1em;
+	}
+
+	.image {
+		max-width:70%;
+    	height:auto;
+	}
+
+	ul {
+		margin: 0.5em;
+		margin-bottom: 0;
+	}
+
+	li {
+		margin-top: 0;
+	}
+
+	li p {
+		font-size: 0.7em;
+		line-height:1.4em;
+		text-overflow: ellipsis; /* will make [...] at the end */
+	    max-width: 350px; /* change to your preferences */
+	    white-space: nowrap; /* paragraph to one line */
+	    overflow:hidden; /* older browsers */
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	.recipeCard:hover {
+		transform: scale(1);
+	}
+
+	.image {
+		max-width:50%;
+    	height:auto;
+	}
+
 }

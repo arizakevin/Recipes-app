@@ -1,22 +1,71 @@
 import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import './Navigation.css';
 
-const Navigation = ({ onRouteChange, isSignedIn }) => {
-    if (isSignedIn) {
-      return (
-        <nav className="nav shadow-5" style={{display: 'flex', justifyContent: 'flex-end'}}>
-          <p onClick={() => onRouteChange('myRecipes')} className='link underline dim ph3 mv2 pointer '>My Recipes</p>
-          <p onClick={() => onRouteChange('signout')} className='link underline dim ph3 mv2 pointer '>Sign Out</p>
-        </nav>
-      );
-    } else {
-      return (
-        <nav className="nav shadow-5" style={{display: 'flex', justifyContent: 'flex-end'}}>
-          <p onClick={() => onRouteChange('signin')} className='link underline dim ph3 pv1 mv2 pointer '>Sign In</p>
-          <p onClick={() => onRouteChange('register')} className='link underline dim ph3 pv1 mv2 pointer '>Register</p>
-        </nav>
-      );
+class Navigation extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        show: true,
+        scrollPos: 0
+      };
     }
+
+    componentDidMount() {
+      window.addEventListener("scroll", this.handleScroll);
+    }
+    componentWillUnmount() {
+      window.removeEventListener("scroll", this.handleScroll);
+    }
+
+    handleScroll = () => {
+      // console.log(document.body.getBoundingClientRect());
+      this.setState({
+        scrollPos: document.body.getBoundingClientRect().top,
+        show: document.body.getBoundingClientRect().top > this.state.scrollPos
+      });
+    };
+
+    handleSubmitSingout = () => {
+      this.props.updateIsSignedIn(false);
+    }
+
+    render () {
+      const { pathname } = this.props.history.location;
+      const { isSignedIn } = this.props;
+      if ((pathname === "/") && !isSignedIn) {
+        return (
+          <nav className={this.state.show ? "nav navActive" : "nav navHidden"}>
+            <Link to="/"><p className='p size pointer left'>HOME</p></Link>
+            <Link to="/register"><p className='p size pointer right'>REGISTER</p></Link>
+            <Link to="/signin"><p  className='p size right'>SIGN IN</p></Link>
+          </nav>
+        ); 
+      } else if ((pathname === "/") && isSignedIn) {
+        return (
+          <nav className={this.state.show ? "nav navActive" : "nav navHidden"}>
+            <Link to="/"><p className='p pointer left'>HOME</p></Link>
+            <Link to="/"><p onClick={this.handleSubmitSingout} className='p pointer right'>SIGN OUT</p></Link>
+            <Link to="/myrecipes"><p className='p pointer right'>MY RECIPES</p></Link>
+          </nav>
+        );
+      } else if ((pathname === "/myrecipes") && isSignedIn) {
+        return (
+          <nav className={this.state.show ? "nav navActive" : "nav navHidden"}>
+            <Link to="/"><p className='p pointer left'>HOME</p></Link>
+            <Link to="/"><p onClick={this.handleSubmitSingout} className='p pointer right'>SIGN OUT</p></Link>
+          </nav>
+        );
+      } else if ((pathname === "/signin") || (pathname === "/register")){
+        return (
+          <nav className={this.state.show ? "nav navActive" : "nav navHidden"}>
+            <Link to="/"><p className='p pointer left'>HOME</p></Link>
+            <Link to="/register"><p className='p pointer right'>REGISTER</p></Link>
+            <Link to="/signin"><p className='p pointer right'>SIGN IN</p></Link>
+          </nav>
+        );
+      } 
+    } 
 }
 
-export default Navigation;
+export default withRouter(Navigation);

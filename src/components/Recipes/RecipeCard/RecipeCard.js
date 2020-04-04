@@ -1,10 +1,10 @@
 import React, { useState }  from 'react';
 import './RecipeCard.css';
 import 'tachyons';
-
 import LikeButton from '../../LikeButton/LikeButton';
+import {Animated} from "react-animated-css";
 
-const RecipeCard = ({ title, image, calories, ingredients, query }) => {
+const RecipeCard = ({ title, image, calories, ingredients, url, query }) => {
 
 	const [recipeSaved, setRecipeSaved] = useState(false);
 
@@ -13,17 +13,24 @@ const RecipeCard = ({ title, image, calories, ingredients, query }) => {
 	}
 
 	return (
+		<Animated animationIn="zoomIn"
+						                animationOut="fadeOut" 
+						                isVisible={true} 
+						                animationInDuration={1000}
+						        >
 		<div className='ib br3 pa3 ma4 bw2 shadow-5 recipeCard'>
 			<h1 className= 'title pa2'>{title}</h1>
-			<p className= 'calories'>Calories: {calories}</p>
-			<img className='image ma3' src={image} alt=""/>
+			<h2 className= 'calories'>Calories: {calories}</h2>
+			<img className='image' src={image} alt=""/>
 			<ul>
 				{ingredients.map(ingredient => (
-					<li className='listText'>{ingredient.text}</li>
+					<li className='listText'><p>{ingredient.text}</p></li>
 				))}
 			</ul>
 			<LikeButton onSavedRecipe={onSavedRecipe} recipeSaved={recipeSaved} query={query}/>
+			<a className='child tr pa2' href={url} target="_blank" rel="noopener noreferrer">MORE</a>
 		</div>
+		</Animated>
 	);
 }
 

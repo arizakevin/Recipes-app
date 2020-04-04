@@ -8,7 +8,7 @@
 .text {
   display: flex;
   justify-content: center;
-  font-family: Zilla Slab Highlight, display;
+  font-family: Montserrat-Regular;
   font-weight: 100;
   color: rgba(162, 25, 25, 1);
   text-transform: none;
@@ -23,6 +23,7 @@
 
 #noFoundText {
   justify-content: center;
+  font-family: Montserrat-Regular;
   color: rgba(162, 25, 25, 0.6);
   text-transform: none;
   margin-top: 1.5em;

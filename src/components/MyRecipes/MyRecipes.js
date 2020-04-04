@@ -1,6 +1,7 @@
 import React, { useState} from 'react';
 import RecipeCard from '../Recipes/RecipeCard/RecipeCard';
 import '../Recipes/Recipes.css';
+import {Animated} from "react-animated-css";
 
 const MyRecipes = ({ recipes }) => {
 

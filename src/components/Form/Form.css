@@ -1,3 +1,7 @@
+button {
+  font-family: Montserrat-Regular;
+}
+
 .search-form {
   min-height: 10vh;
   display: flex;
@@ -12,20 +16,20 @@
 }
 
 .search-button{
-   background: lightcoral;
+   background: #a21a1a;
    border: none;
    padding: 10px 20px;
    color: white;
-   transition-duration: 0.1s;
+   transition-duration: 0.3s;
 }
 
 .search-button:hover {
    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-   background-color: #cf7373;
+   background-color: #ad5151;
 }
 
 .search-button:active {
-  background-color: #af5050;
+  background-color: #481616;
   transform: translateY(3px);
 }
 

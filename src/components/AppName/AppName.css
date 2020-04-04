@@ -1,0 +1,67 @@
+@font-face { font-family: Marelan; src: url('Marelan-axx0g.otf'); } 
+
+.animate {
+  animation-name: spin;
+  animation-duration: 2000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
+}
+
+@keyframes spin {
+    0% {
+        transform:rotate(0deg);
+    }
+    25% {
+        transform:rotate(2deg);
+    }
+    50% {
+        transform:rotate(0deg);
+    }
+    75% {
+        transform:rotate(-2deg);
+    }
+    100% {
+        transform:rotate(0deg);
+    }
+}
+
+.text {
+  display: flex;
+  justify-content: center;
+  font-weight: 100;
+  font-family: Marelan;
+  font-style: normal;
+  text-decoration: none;
+  letter-spacing: normal;
+  margin: 0;
+  min-width: 100px;
+  font-size: 2.5em;
+  background-color: rgba(162, 25, 25, 1);
+  background-image: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(162,25,25,1) 35%, rgba(124,109,117,1) 100%);
+  background-size: 100%;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+
+.insetshadow {
+    letter-spacing: .1em;
+    text-shadow: 
+      -1px -1px 1px transparent, 
+      2px 2px 1px transparent;
+}
+
+@media only screen and (max-width: 650px) {
+   .text {
+      font-size: 2.3em;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+   .text {
+      font-size: 2.1em;
+    }
+}
