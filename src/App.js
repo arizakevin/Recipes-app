@@ -7,6 +7,7 @@ import Signin from './components/Signin/Signin';
 import Register from './components/Register/Register';
 import Navigation from './components/Navigation/Navigation';
 import BottomNavbar from './components/BottomNavbar/BottomNavbar';
+import MyRecipes from './components/MyRecipes/MyRecipes';
 import './App.css';
 
 const APP_ID = 'cba9219b';
@@ -125,6 +126,7 @@ export default function App() {
             />
           }
         />
+        <Route path="/myrecipes" component={MyRecipes}/>
       </Switch>
       <BottomNavbar/>
     </div>

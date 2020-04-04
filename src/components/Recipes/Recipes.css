@@ -1,3 +1,5 @@
+
+
 .recipes {
   display: flex;
   justify-content: space-around;
@@ -27,7 +29,7 @@
   color: rgba(162, 25, 25, 0.6);
   text-transform: none;
   margin-top: 1.5em;
-  font-size: 1.5em;
+  font-size: 1em;
 }
 
 @media only screen and (max-width: 500px) {
@@ -36,7 +38,7 @@
     }
 
     #noFoundText {
-      font-size: 1em;
+      font-size: 0.7em;
     }
 
 }

@@ -12,7 +12,9 @@ export default function Recipes ({ recipes, query }) {
 		if (recipes.length === 0) {
 			return (
 				<div>
-		  			<div className='text' id="noFoundText"><h2>No recipes found  :(</h2></div>;
+		  			<div className="text" id="noFoundText">
+		  				<h2>...Sorry, couldn't get the recipes...</h2>
+		  			</div>;
 					<div className="spam pa4"/>
 				</div>	
 			);
