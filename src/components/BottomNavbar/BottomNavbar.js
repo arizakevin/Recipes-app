@@ -33,6 +33,7 @@ export default class BottomNavbar extends React.Component {
              rel="noopener noreferrer"
           > 
             Kevin Ariza
+            <i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
           </a>
 				</p>
 			</nav>

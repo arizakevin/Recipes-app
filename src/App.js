@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createRef, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Home from './components/Home/Home';
 import Logo from './components/Logo/Logo';
@@ -18,9 +18,7 @@ export default function App() {
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState('');
   const [query, setQuery] = useState('apple');
-  const [route, setRoute] = useState('signin');
   const [isSignedIn, setIsSignedIn] = useState(false);
-  const [appRenders, setAppRenders] = useState(0);
   const [user, setUser] = useState({
       id: '',
       name: '',
@@ -31,8 +29,6 @@ export default function App() {
 
   const resetState = () => {
     setRecipes([]);
-    setQuery('apple');
-    setRoute('signin');
     setIsSignedIn(false);
     setUser({
         id: '',

@@ -1,8 +1,11 @@
 .App {
   min-height: 100vh;
   min-width: 300px;
-  background-color: linear-gradient(270deg, rgba(252,248,232,1) 0%, rgba(209,204,163,1) 35%, rgba(168,139,120,1) 100%);
-  background: url(./images/background1.jpg) no-repeat center center fixed;
+  background: url(./assets/backgrounds/background1.jpg) no-repeat center center fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
   padding-top: 100px;
   padding-bottom: 100px; /* Add a top margin to avoid content overlay */

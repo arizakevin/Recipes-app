@@ -69,6 +69,10 @@ p a:hover {
   opacity: 1;
 }
 
+a i {
+  padding-left: 0.5em;
+}
+
 @media only screen and (max-width: 500px) {
     nav {
       background-color: black;

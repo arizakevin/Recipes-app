@@ -1,0 +1,13 @@
+i {
+  padding: 0.5em;
+  transition-duration: 0.3s;
+}
+
+i:hover {
+   transform: translateY(-3px);
+   transform: scale(1.2);
+}
+
+@media only screen and (max-width: 700px) {
+  
+}
