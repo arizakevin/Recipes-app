@@ -19,8 +19,8 @@ export default function Signin (props) {
   const onPasswordChange = (event) => {
     setSignInPassword(event.target.value);
   }
-  /*
-  const onSubmitSignIn__TO_IMPLEMENT_SOON = () => {
+  
+  const onSubmitSignIn = () => {
     fetch('http://localhost:3000/signin', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
@@ -30,20 +30,14 @@ export default function Signin (props) {
       })
     })
       .then(response => response.json())
-      .then(data => {
-        if (data === 'succes') {
-          console.log(data);
+      .then(user => {
+        if (user.id) {
+          loadUser(user); 
           updateIsSignedIn(true);
-          history.push("/"); 
+          history.push("/");
         }
       })
       .catch(console.log);
-  }
-  */
-
-  const onSubmitSignIn = () => {
-    updateIsSignedIn(true);
-    history.push("/");
   }
 
   return (

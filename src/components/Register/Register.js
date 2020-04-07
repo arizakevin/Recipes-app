@@ -21,8 +21,8 @@ export default function Signin(props) {
   const onPasswordChange = event => {
     setPassword(event.target.value);
   }
-  /*
-  const onSubmitSignIn__TO_IMPLEMENT_SOON = () => {
+ 
+  const onSubmitSignIn = () => {
     fetch('http://localhost:3000/register', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
@@ -35,7 +35,6 @@ export default function Signin(props) {
       .then(response => response.json())
       .then(user => {
         if (user.id) {
-          console.log('Registered Successful:', user);
           loadUser(user); 
           updateIsSignedIn(true);
           history.push("/");
@@ -43,12 +42,7 @@ export default function Signin(props) {
       })
       .catch(console.log);
   }
-  */
   
-  const onSubmitSignIn = () => {
-    updateIsSignedIn(true);
-    history.push("/");
-  }
 
   return (
       <div className="pb3">
