@@ -143,9 +143,3 @@ export default function App() {
     </div>
   );
 }
-
-/* My Recipes -> Sorted Recipes
-
-Database [ label, image, calories, ingredients ]
-
-*/

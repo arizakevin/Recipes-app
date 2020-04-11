@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import RecipeCard from './RecipeCard/RecipeCard';
 import './Recipes.css';
 import {Animated} from "react-animated-css";

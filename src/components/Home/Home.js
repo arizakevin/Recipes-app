@@ -5,9 +5,7 @@ import { animateScroll as scroll} from 'react-scroll';
 
 export default function Home(props) {
 	useEffect(() => {
-  	  setTimeout(() => {
         scroll.scrollTo(115);
-      }, 50);
   	},[])
 
 	const { getSearch, search, updateSearch, recipes, query, isSignedIn, user } = props;

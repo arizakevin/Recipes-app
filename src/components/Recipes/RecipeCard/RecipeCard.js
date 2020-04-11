@@ -1,14 +1,11 @@
 import React, { useState, useEffect }  from 'react';
-import { useHistory } from 'react-router-dom';
 import './RecipeCard.css';
 import 'tachyons';
 import SaveButton from '../../Buttons/SaveButton/SaveButton';
 import {Animated} from "react-animated-css";
 
 const RecipeCard = ({ title, image, calories, ingredients, url, isSignedIn, user }) => {
-	let { pathname } = useHistory().location;
 	const [recipeSaved, setRecipeSaved] = useState(false);
-	const [recipeLiked, setRecipeLiked] = useState(false);
 
 	useEffect( () => {
 		// Check Recipes in user database only if it is signed in

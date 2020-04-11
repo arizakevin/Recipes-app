@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import RecipeCard from '../Recipes/RecipeCard/RecipeCard';
 import '../Recipes/Recipes.css';
 import {Animated} from "react-animated-css";
-import TextCleaner from 'text-cleaner';
 import { animateScroll as scroll} from 'react-scroll';
 
 export default function MyRecipes (props) {

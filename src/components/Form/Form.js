@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './Form.css';
 
 const Form = ({ getSearch, search, updateSearch }) => {
