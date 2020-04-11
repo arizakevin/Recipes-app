@@ -1,7 +1,7 @@
 .App {
   min-height: 100vh;
   min-width: 300px;
-  background: url(./assets/backgrounds/background1.jpg) no-repeat center center fixed;
+  background: url(https://images.unsplash.com/photo-1495195129352-aeb325a55b65?ixlib=rb-1.2.1&auto=format&fit=crop&w=1510&q=80) no-repeat center center fixed;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -12,4 +12,6 @@
   transition: 3s ease-in-out;
 }
 
-
+html {
+    scroll-behavior: smooth;
+}

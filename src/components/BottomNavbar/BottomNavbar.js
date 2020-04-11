@@ -5,12 +5,15 @@ export default class BottomNavbar extends React.Component {
 	constructor() {
     	super();
     	this.state = {
-    	  show: true,
+    	  show: false,
     	  scrollPos: 0
     	};
   	}
   	componentDidMount() {
-  	  window.addEventListener("scroll", this.handleScroll);
+      setTimeout(() => {
+        window.addEventListener("scroll", this.handleScroll); 
+      }
+      , 2000);
   	}
   	componentWillUnmount() {
   	  window.removeEventListener("scroll", this.handleScroll);
@@ -26,9 +29,9 @@ export default class BottomNavbar extends React.Component {
 	render() {
 		return (
 			<nav className={this.state.show ? "active navbar" : "hidden navbar"}>
-				<p className="navtext Left">User registration and saving recipes will work soon ;)</p>
-  				<p className="navtext Right">Developed with love by 
-					<a href='https://www.linkedin.com/in/kevinwarizas/' 
+  				<p className="navtext1">Developed with love by 
+					<a className="navtext2"
+            href='https://www.linkedin.com/in/kevinwarizas/' 
              target="_blank" 
              rel="noopener noreferrer"
           > 

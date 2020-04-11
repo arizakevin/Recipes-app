@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import Home from './components/Home/Home';
 import Logo from './components/Logo/Logo';
 import AppName from './components/AppName/AppName';
@@ -9,12 +9,10 @@ import Navigation from './components/Navigation/Navigation';
 import BottomNavbar from './components/BottomNavbar/BottomNavbar';
 import MyRecipes from './components/MyRecipes/MyRecipes';
 import './App.css';
-
-const APP_ID = 'cba9219b';
-const APP_KEY = '7e92be1e8a26b78e9edd5ed297fc36ab';
+import { animateScroll as scroll} from 'react-scroll';
 
 export default function App() {
-
+  let { pathname } = useHistory().location;
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState('');
   const [query, setQuery] = useState('apple');
@@ -23,7 +21,6 @@ export default function App() {
       id: '',
       name: '',
       email: '',
-      entries: 0,
       joined: ''
   });
 
@@ -34,24 +31,30 @@ export default function App() {
         id: '',
         name: '',
         email: '',
-        entries: 0,
         joined: ''
     })
   }
 
   useEffect( () => {
-      getRecipes();
-  }, [query]); 
-
-  useEffect( () => {
-      console.log('isSignedIn: ', isSignedIn);
-  },[]); 
+      if (pathname === "/") {
+        getRecipes();
+      }    
+  }, [query], [pathname]);  
 
   const getRecipes = () => {
-      fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`)  
-          .then(response => response.json())
-          .then(data => setRecipes(data.hits))
-          .catch(error => console.log(error))  
+      fetch('http://localhost:3000/recipes', {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          query: query
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        setRecipes(data)
+        console.log('Data: ', data)
+      })
+      .catch(error => console.log(error))  
   }
 
   const updateSearch = event => {
@@ -64,6 +67,9 @@ export default function App() {
       setQuery(search);
       setSearch("");
     }
+    setTimeout(() => {
+      scroll.scrollTo(625); 
+    }, 100);
   }
 
   const loadUser = data => {
@@ -83,7 +89,7 @@ export default function App() {
       resetState();
     } 
   }
-
+  
   return(
     <div className="App mb0">
       <Navigation isSignedIn={isSignedIn} updateIsSignedIn={updateIsSignedIn} />
@@ -100,6 +106,8 @@ export default function App() {
               updateSearch={updateSearch} 
               recipes={recipes}
               query={query}
+              isSignedIn={isSignedIn}
+              user={user}
             />
           }
         />
@@ -121,7 +129,15 @@ export default function App() {
             />
           }
         />
-        <Route path="/myrecipes" component={MyRecipes}/>
+        <Route 
+          path="/myrecipes" 
+          render={(props) => 
+            <MyRecipes {...props} 
+              user={user}
+              isSignedIn={isSignedIn}
+            />
+          }
+        />
       </Switch>
       <BottomNavbar/>
     </div>

@@ -10,6 +10,7 @@
 .letter1 {
 	font-family: Montserrat-Regular;
   color: rgba(132, 10, 10, 1);
+  font-size: 2.3em;
 }
 
 .letter2 {
@@ -42,4 +43,50 @@
 .btn:active {
   background-color: #481616;
   transform: translateY(3px);
+}
+
+@media only screen and (max-width: 500px) {
+    .letter1 {
+      font-size: 2em;
+    }
+    
+    .letter2 {
+     font-size: 0.8em;
+    }
+    
+    .letter3 {
+      font-size: 1.2em;
+      padding:0.1em;
+      margin-bottom: 0;
+    }
+    
+    .btn{
+       padding: 8px 17px;
+       font-size: 0.8em;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .letter1 {
+      font-size: 1.5em;
+    }
+    
+    .letter2 {
+     font-size: 0.6em;
+    }
+    
+    .letter3 {
+      font-size: 1em;
+      padding:0.1em;
+      margin-bottom: 0;
+    }
+    
+    .btn{
+       padding: 7px 14px;
+       font-size: 0.7em;
+    }
+
+    .article {
+      max-width: 300px;
+    }
 }

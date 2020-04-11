@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import "../Signin/Signin.css";
 import {Animated} from "react-animated-css";
+import { animateScroll as scroll} from 'react-scroll';
 
 export default function Signin(props) {
   let history = useHistory();
@@ -9,6 +10,10 @@ export default function Signin(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+
+  useEffect(() => {
+    scroll.scrollTo(518); 
+  },[])
 
   const onNameChange = event => {
     setName(event.target.value);

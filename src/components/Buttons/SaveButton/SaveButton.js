@@ -1,22 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import '../Button.css';
 
-const SaveButton = ({ onSavedRecipe, recipeSaved, query }) => {
-    const [saved, setSaved] = useState(recipeSaved);
-
-    useEffect( () => {
-        setSaved(false);
-    }, [query]);
-
-    const handleClick = () => {
-      setSaved(!saved);
-      onSavedRecipe(saved);
+const SaveButton = ({ onSavedRecipe, recipeSaved }) => {
+    const handleSaving = () => {
+      onSavedRecipe();
     }
 
-    if (saved ) {
-      return <i class="fa fa-bookmark fa-2x" aria-hidden="true" onClick={handleClick}></i>;
+    if (recipeSaved) {
+      return <i class="fa fa-bookmark fa-2x" aria-hidden="true" onClick={handleSaving}></i>;
     } else {
-      return <i class="fa fa-bookmark-o fa-2x" aria-hidden="true" onClick={handleClick}></i>;
+      return <i class="fa fa-bookmark-o fa-2x" aria-hidden="true" onClick={onSavedRecipe}></i>;
     }
 }
 

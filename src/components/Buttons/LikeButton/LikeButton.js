@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import '../Button.css';
 
-const LikeButton = ({ onLikedRecipe, recipeLiked, query }) => {
+const LikeButton = ({ onRecipeLiked, recipeLiked }) => {
     const [liked, setLiked] = useState(recipeLiked);
-
-    useEffect( () => {
-        setLiked(false);
-    }, [query]);
 
     const handleClick = () => {
       setLiked(!liked);
-      onLikedRecipe(liked);
+      onRecipeLiked(liked);
     }
 
     if (liked) {

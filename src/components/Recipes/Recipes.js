@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import RecipeCard from './RecipeCard/RecipeCard';
 import './Recipes.css';
 import {Animated} from "react-animated-css";
 
-export default function Recipes ({ recipes, query }) {
-
-	const [key, setKey] = useState(0);
+export default function Recipes ({ recipes, isSignedIn, user }) {
 
 	const renderRecipes = () => {
 		console.log('Recipes: ', recipes);
@@ -28,12 +26,13 @@ export default function Recipes ({ recipes, query }) {
 						                isVisible={true} 
 						                animationInDuration={1000}
 						        >
-			                    	<RecipeCard className='ma2' query={query}
-			                    	  key={() => {setKey(key + 1)}} 
+			                    	<RecipeCard className='ma2' 
+			                    	  isSignedIn={isSignedIn}
+			                    	  user={user}
 			                    	  title={recipe.recipe.label} 
 			                    	  image={recipe.recipe.image}
 			                    	  calories={Math.round(recipe.recipe.calories)}
-			                    	  ingredients={recipe.recipe.ingredients} 
+			                    	  ingredients={recipe.recipe.ingredientLines} 
 			                    	  url={recipe.recipe.url}   
 			                    	/>
 			                    </Animated>

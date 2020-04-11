@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import './Navigation.css';
+import { animateScroll as scroll} from 'react-scroll';
 
 class Navigation extends React.Component {
     constructor(props) {
@@ -28,7 +29,12 @@ class Navigation extends React.Component {
 
     handleSubmitSingout = () => {
       this.props.updateIsSignedIn(false);
+      scroll.scrollTo(115);
     }
+
+    goToTop = () => {
+      scroll.scrollTo(115);
+    } 
 
     render () {
       const { pathname } = this.props.history.location;
@@ -36,7 +42,7 @@ class Navigation extends React.Component {
       if ((pathname === "/") && !isSignedIn) {
         return (
           <nav className={this.state.show ? "nav navActive" : "nav navHidden"}>
-            <Link to="/"><p className='p size pointer left'>HOME</p></Link>
+            <Link to="/"><p onClick={this.goToTop} className='p size pointer left'>HOME</p></Link>
             <Link to="/register"><p className='p size pointer right'>REGISTER</p></Link>
             <Link to="/signin"><p  className='p size right'>SIGN IN</p></Link>
           </nav>
@@ -44,7 +50,7 @@ class Navigation extends React.Component {
       } else if ((pathname === "/") && isSignedIn) {
         return (
           <nav className={this.state.show ? "nav navActive" : "nav navHidden"}>
-            <Link to="/"><p className='p pointer left'>HOME</p></Link>
+            <Link to="/"><p onClick={this.goToTop}  className='p pointer left'>HOME</p></Link>
             <Link to="/"><p onClick={this.handleSubmitSingout} className='p pointer right'>SIGN OUT</p></Link>
             <Link to="/myrecipes"><p className='p pointer right'>MY RECIPES</p></Link>
           </nav>
@@ -52,14 +58,14 @@ class Navigation extends React.Component {
       } else if ((pathname === "/myrecipes") && isSignedIn) {
         return (
           <nav className={this.state.show ? "nav navActive" : "nav navHidden"}>
-            <Link to="/"><p className='p pointer left'>HOME</p></Link>
+            <Link to="/"><p onClick={this.goToTop} className='p pointer left'>HOME</p></Link>
             <Link to="/"><p onClick={this.handleSubmitSingout} className='p pointer right'>SIGN OUT</p></Link>
           </nav>
         );
       } else if ((pathname === "/signin") || (pathname === "/register")){
         return (
           <nav className={this.state.show ? "nav navActive" : "nav navHidden"}>
-            <Link to="/"><p className='p pointer left'>HOME</p></Link>
+            <Link to="/"><p onClick={this.goToTop} className='p pointer left'>HOME</p></Link>
             <Link to="/register"><p className='p pointer right'>REGISTER</p></Link>
             <Link to="/signin"><p className='p pointer right'>SIGN IN</p></Link>
           </nav>

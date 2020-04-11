@@ -1,4 +1,10 @@
 .Tilt {
-  background: #fcf8e8; /* w3c */
-  border-radius: 10px;
+    background: #fcf8e8; /* w3c */
+    border-radius: 10px;
+}
+
+img {
+	max-width:90%;
+    height:auto;
+    padding-top: 5px;
 }
