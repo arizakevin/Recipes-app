@@ -17,7 +17,7 @@ export default function MyRecipes (props) {
 
 	const getMyRecipes = () => {
 		if (isSignedIn) {
-			fetch('http://localhost:3000/userrecipes', {
+			fetch('https://secure-cove-12071.herokuapp.com/userrecipes', {
   			  method: 'post',
   			  headers: {'Content-Type': 'application/json'},
   			  body: JSON.stringify({

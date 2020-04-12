@@ -25,7 +25,7 @@ const RecipeCard = ({ title, image, calories, ingredients, url, isSignedIn, user
  	}); 
 
 	const onSavedRecipe = () => {
-  		fetch('http://localhost:3000/saverecipes', {
+  		fetch('https://secure-cove-12071.herokuapp.com/saverecipes', {
   		  method: 'post',
   		  headers: {'Content-Type': 'application/json'},
   		  body: JSON.stringify({

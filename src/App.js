@@ -42,7 +42,7 @@ export default function App() {
   }, [query], [pathname]);  
 
   const getRecipes = () => {
-      fetch('http://localhost:3000/recipes', {
+      fetch('https://secure-cove-12071.herokuapp.com/recipes', {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
