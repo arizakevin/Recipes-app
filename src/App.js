@@ -16,9 +16,9 @@ export default function App() {
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState('');
   const [query, setQuery] = useState('apple');
-  const [isSignedIn, setIsSignedIn] = useState(true);
+  const [isSignedIn, setIsSignedIn] = useState(false);
   const [user, setUser] = useState({
-      id: '13',
+      id: '',
       name: '',
       email: '',
       joined: ''
