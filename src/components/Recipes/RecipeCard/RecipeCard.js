@@ -14,7 +14,7 @@ const RecipeCard = ({ title, image, calories, ingredients, url, isSignedIn, user
 	useEffect( () => {
 		// Check Recipes in user database only if it is signed in
   		if (isSignedIn) {
-			fetch('http://localhost:3000/checkrecipe', {
+			fetch('https://secure-cove-12071.herokuapp.com/checkrecipe', {
   			  method: 'post',
   			  headers: {'Content-Type': 'application/json'},
   			  body: JSON.stringify({
@@ -29,7 +29,7 @@ const RecipeCard = ({ title, image, calories, ingredients, url, isSignedIn, user
  	}); 
 
 	const onSavedRecipe = () => {
-  		fetch('http://localhost:3000/saverecipes', {
+  		fetch('https://secure-cove-12071.herokuapp.com/saverecipes', {
   		  method: 'post',
   		  headers: {'Content-Type': 'application/json'},
   		  body: JSON.stringify({
