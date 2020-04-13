@@ -8,14 +8,13 @@ export default function Home(props) {
         scroll.scrollTo(115);
   	},[])
 
-	const { getSearch, search, updateSearch, recipes, query, isSignedIn, user } = props;
+	const { getSearch, search, updateSearch, recipes, isSignedIn, user } = props;
 	return(
   		<div>
    			<Form getSearch={getSearch} search={search} updateSearch={updateSearch} />
 			<div className='ma3'/>
 			<Recipes 
 				recipes={recipes} 
-				query={query} 
 				isSignedIn={isSignedIn} 
 				user={user}
 			/>

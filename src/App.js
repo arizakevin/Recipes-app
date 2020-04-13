@@ -16,9 +16,9 @@ export default function App() {
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState('');
   const [query, setQuery] = useState('apple');
-  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [isSignedIn, setIsSignedIn] = useState(true);
   const [user, setUser] = useState({
-      id: '',
+      id: '13',
       name: '',
       email: '',
       joined: ''
@@ -38,11 +38,12 @@ export default function App() {
   useEffect( () => {
       if (pathname === "/") {
         getRecipes();
+        console.log('Recipes: ', recipes)
       }    
-  }, [query], [pathname]);  
+  }, [query]);  
 
   const getRecipes = () => {
-      fetch('https://secure-cove-12071.herokuapp.com/recipes', {
+      fetch('http://localhost:3000/recipes', {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -52,7 +53,6 @@ export default function App() {
       .then(response => response.json())
       .then(data => {
         setRecipes(data)
-        console.log('Data: ', data)
       })
       .catch(error => console.log(error))  
   }
@@ -105,7 +105,6 @@ export default function App() {
               search={search} 
               updateSearch={updateSearch} 
               recipes={recipes}
-              query={query}
               isSignedIn={isSignedIn}
               user={user}
             />

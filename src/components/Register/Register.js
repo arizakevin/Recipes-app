@@ -28,7 +28,7 @@ export default function Signin(props) {
   }
  
   const onSubmitSignIn = () => {
-    fetch('https://secure-cove-12071.herokuapp.com/register', {
+    fetch('http://localhost:3000/register', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({

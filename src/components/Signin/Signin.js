@@ -23,8 +23,8 @@ export default function Signin (props) {
     setSignInPassword(event.target.value);
   }
   
-  const onSubmitSignIn = () => {
-    fetch('https://secure-cove-12071.herokuapp.com/signin', {
+  const onSubmitSignIn = () => { // https://secure-cove-12071.herokuapp.com
+    fetch('http://localhost:3000/signin', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({

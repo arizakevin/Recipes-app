@@ -7,6 +7,10 @@ import {Animated} from "react-animated-css";
 const RecipeCard = ({ title, image, calories, ingredients, url, isSignedIn, user }) => {
 	const [recipeSaved, setRecipeSaved] = useState(false);
 
+	useEffect(()=> {
+		console.log('Ingredients from Recipe Card: ', ingredients)
+	},[])
+
 	useEffect( () => {
 		// Check Recipes in user database only if it is signed in
   		if (isSignedIn) {
@@ -20,12 +24,12 @@ const RecipeCard = ({ title, image, calories, ingredients, url, isSignedIn, user
   			})
   			.then(response => response.json())
   			.then(data => setRecipeSaved(data))
-  			.catch(error => console.log(error)) 
+  			.catch(error => console.log('Error from RecipeCard.js, useEffect: ', error)) 
 		}
  	}); 
 
 	const onSavedRecipe = () => {
-  		fetch('https://secure-cove-12071.herokuapp.com/saverecipes', {
+  		fetch('http://localhost:3000/saverecipes', {
   		  method: 'post',
   		  headers: {'Content-Type': 'application/json'},
   		  body: JSON.stringify({
@@ -45,7 +49,7 @@ const RecipeCard = ({ title, image, calories, ingredients, url, isSignedIn, user
       	  	setRecipeSaved(false)
       	  } 
       	})
-  		.catch(error => console.log(error))  
+  		.catch(error => console.log('Error from RecipeCard.js, OnSavedRecipe: ', error))  
 	}
 
 	const renderButtons = () => {

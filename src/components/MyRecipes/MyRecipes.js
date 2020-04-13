@@ -6,30 +6,34 @@ import { animateScroll as scroll} from 'react-scroll';
 
 export default function MyRecipes (props) {
 	const { isSignedIn, user } = props;
-	const [myRecipes, setMyRecipes] = useState([]);
+	const [myRecipes, setMyRecipes] = useState([])
 
 	useEffect(() => {
-		getMyRecipes();
       	setTimeout(() => {
     	  scroll.scrollTo(600); 
     	}, 50);
 	},[])
 
+	useEffect(() => {
+      	if (isSignedIn) {
+      		getMyRecipes();
+      	}
+	},[])
+
 	const getMyRecipes = () => {
-		if (isSignedIn) {
-			fetch('https://secure-cove-12071.herokuapp.com/userrecipes', {
-  			  method: 'post',
-  			  headers: {'Content-Type': 'application/json'},
-  			  body: JSON.stringify({
-  			  	user_id: user.id
-  			  })
-  			})
-  			.then(response => response.json())
-  			.then(data => {
-      		    setMyRecipes(data)
-      		})
-  			.catch(error => console.log(error))  
-		}
+		console.log('Fetching Recipes')
+		fetch('http://localhost:3000/userrecipes', {
+  		  method: 'post',
+  		  headers: {'Content-Type': 'application/json'},
+  		  body: JSON.stringify({
+  		  	user_id: user.id
+  		  })
+  		})
+  		.then(response => response.json())
+  		.then(data => {
+      	    setMyRecipes(data) 
+      	})
+      	.catch(error => console.log('Error from MyRecipes.js, getMyRecipes: ', error))  
 	}
 
 	const renderMyRecipes = () => {
@@ -68,7 +72,7 @@ export default function MyRecipes (props) {
         	            }
         	        </div>
 				)
-			}
+			}	
 		} else {
 			return (
 				<div>
