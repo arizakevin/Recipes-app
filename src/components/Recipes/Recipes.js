@@ -18,7 +18,6 @@ export default function Recipes (props) {
 			return (
 				<div>
 		  			<div className="text" id="noFoundText">
-		  				<h2>...Sorry, couldn't get the recipes...</h2>
 		  				<h2>...Try searching again...</h2>
 		  			</div>;
 					<div className="spam pa4"/>
